@@ -1,0 +1,28 @@
+
+def findCatalan(n):
+    if (n == 0 or n == 1): 
+        return 1
+  
+    # Table to store results of subproblems 
+    findCatalan = [0 for i in range(n + 1)] 
+  
+    # Initialize first two values in table 
+    findCatalan[0] = 1
+    findCatalan[1] = 1
+  
+    # Fill entries in catalan[] using recursive formula 
+    for i in range(2, n + 1): 
+        findCatalan[i] = 0
+        for j in range(i): 
+            findCatalan[i] = findCatalan[i] + findCatalan[j] * findCatalan[i-j-1] 
+  
+    # Return last entry 
+    return findCatalan[n] 
+ 
+if __name__ == '__main__': 
+    t=int(input())
+    for tcs in range(t):
+        n=int(input())
+        
+        print(findCatalan(n))
+        
